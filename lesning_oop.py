@@ -14,7 +14,7 @@ class Placeholder:
         self.x = file[0]
         self.y = file[1]
         self.x1 = self.x[-1]
-        self.y1 = self.y[-1]
+        self.y1 = self.y[-1] / 1000000
         self.average_growthrate_30 = (self.y[-1]- self.y[len(self.y) - 30]) / (self.x[-1] - self.x[len(self.y)-30])
         self.average_growthrate_15 = (self.y[-1] - self.y[len(self.y) - 15]) / (self.x[-1] - self.x[len(self.y)-15])
         self.average_growthrate_5 = (self.y[-1] - self.y[len(self.y) - 5]) / (self.x[-1] - self.x[len(self.y) - 5])
@@ -53,7 +53,7 @@ class Placeholder:
             plt.show()
 
     def plot_derivative(self, goal):
-        plt.plot(self.x[1:], [i * 1000000 for i in self.der(self.x, self.y)]) # times with a milion so that the growth rate is acurate to the actual population
+        plt.plot(self.x[1:], [i * 1000000 for i in self.der()]) # times with a milion so that the growth rate is acurate to the actual population
         plt.title('Population growth rate')
         plt.xlabel('Year')
         plt.ylabel('Population growth rate')
@@ -75,7 +75,7 @@ class Placeholder:
 
 def main():
     placeholder_2 = Placeholder(data)
-    placeholder_2.plot(1, 'plot')
+    placeholder_2.plot(2, 'plot')
 
 
 if __name__ == '__main__':
