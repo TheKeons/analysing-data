@@ -28,4 +28,7 @@ class Placeholder:
         pred_5 = [self.point_slope_form(self.average_growthrate_5)(i) for i in self.x_prediction]
         return pred_30, pred_15, pred_5
 
+    def plot_data(self):
+        
+
     
