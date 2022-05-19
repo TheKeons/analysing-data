@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-with open(r'C:\Users\katie\OneDrive\Dokumenter\GitHub\School\Matte\lesing av filer\norges-befolkning.csv', 'r') as f:
+with open(r'C:\Users\katie\OneDrive\Dokumenter\GitHub\analysing-data\norges-befolkning.csv', 'r') as f:
     data = np.genfromtxt(f, delimiter=';', dtype=int, skip_header=1, usecols=[0, 1], unpack=True) # returns a 2d array
     x = list(data[0]) # list of years
     y = [i / 1000000 for i in data[1]] # list of population devided by a milion so that it is easier to present
@@ -33,7 +33,6 @@ plt.title('Population of Norway')
 plt.xlabel('Year')
 plt.ylabel('Population in milions')
 plt.show()
-plt.clf()
 
 # plotting the population growth rate
 plt.plot(x[1:], [i * 1000000 for i in der(x, y)]) # times with a milion so that the growth rate is acurate to the actual population
@@ -41,7 +40,6 @@ plt.title('Population growth rate')
 plt.xlabel('Year')
 plt.ylabel('Population growth rate')
 plt.show()
-plt.clf()
 
 # plotting the population prediction
 plt.plot(x, y, label='Population')
@@ -53,4 +51,3 @@ plt.xlabel('Year')
 plt.ylabel('Population in milions')
 plt.legend()
 plt.show()
-plt.clf()
