@@ -17,15 +17,15 @@ def one_point(x1, y1, growthrate):
 
 def make_prediction(y, x):
     # predictions
-    average_30 = (y[-1]- y[252]) / (x[-1] - x[252])
-    average_15 = (y[-1] - y[267]) / (x[-1] - x[267])
-    average_5 = (y[-1] - y[277]) / (x[-1] - x[277])
+    average_growthrate_30 = (y[-1]- y[len(y) - 30]) / (x[-1] - x[len(y)-30])
+    average_growthrate_15 = (y[-1] - y[len(y) - 15]) / (x[-1] - x[len(y)-15])
+    average_growthrate_5 = (y[-1] - y[len(y) - 5]) / (x[-1] - x[len(y) - 5])
 
-    x_prediction = [i for i in range(2022, 2072)]
+    x_prediction = range(2022, 2072)
 
-    pred_30 = [one_point(x[-1], y[-1], average_30)(i) for i in x_prediction]
-    pred_15 = [one_point(x[-1], y[-1], average_15)(i) for i in x_prediction]
-    pred_5 = [one_point(x[-1], y[-1], average_5)(i) for i in x_prediction]
+    pred_30 = [one_point(x[-1], y[-1], average_growthrate_30)(i) for i in x_prediction]
+    pred_15 = [one_point(x[-1], y[-1], average_growthrate_15)(i) for i in x_prediction]
+    pred_5 = [one_point(x[-1], y[-1], average_growthrate_5)(i) for i in x_prediction]
 
     return x_prediction, pred_30, pred_15, pred_5
 
