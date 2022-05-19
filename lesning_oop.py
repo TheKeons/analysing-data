@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-with open(r'C:\Users\katie\OneDrive\Dokumenter\GitHub\analysing-data\norges-befolkning.csv', 'r') as f:
+with open(r'analysing-data\norges-befolkning.csv', 'r') as f:
     data = np.genfromtxt(f, delimiter=';', dtype=int, skip_header=1, usecols=[0, 1], unpack=True) # returns a 2d array
     
 
@@ -27,3 +27,5 @@ class Placeholder:
         pred_15 = [self.point_slope_form(self.average_growthrate_15)(i) for i in self.x_prediction]
         pred_5 = [self.point_slope_form(self.average_growthrate_5)(i) for i in self.x_prediction]
         return pred_30, pred_15, pred_5
+
+    
