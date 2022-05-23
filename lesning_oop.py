@@ -116,6 +116,7 @@ class Placeholder:
         plt.xlabel('Year')
         plt.ylabel('Population growth rate')
         plt.legend()
+        plt.tight_layout()
         # Picks whether to save or show graph
         if goal == 'save':
             plt.savefig('growth_rate.png')
