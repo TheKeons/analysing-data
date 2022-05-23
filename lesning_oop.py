@@ -68,18 +68,21 @@ class Placeholder:
     def plot_prediction(self, goal, populations, names):
         match populations:
             case 'uno':
+                title = names[0]
                 plt.plot(self.x, self.y)
                 plt.plot(self.x_prediction, self.pred_30, label=f'Based on last 30 years, {names[0]}')
                 plt.plot(self.x_prediction, self.pred_15, label=f'Based on last 15 years, {names[0]}')
                 plt.plot(self.x_prediction, self.pred_5, label=f'Based on last 5 years, {names[0]}')
 
             case 'dos':
+                title = names[1]
                 plt.plot(self.t, self.k)
                 plt.plot(self.x_prediction, self.pred_30_2, label=f'Based on last 30 years, {names[1]}')
                 plt.plot(self.x_prediction, self.pred_15_2, label=f'Based on last 15 years, {names[1]}')
                 plt.plot(self.x_prediction, self.pred_5_2, label=f'Based on last 5 years, {names[1]}')
             
             case 'both':
+                title = names[0] + ' and ' + names[1]
                 plt.plot(self.x, self.y, label=names[0])
                 plt.plot(self.t, self.k, label=names[1])
                 plt.plot(self.x_prediction, self.pred_30, label=f'Based on last 30 years, {names[0]}')
@@ -88,7 +91,7 @@ class Placeholder:
                 plt.plot(self.x_prediction, self.pred_15_2, label=f'Based on last 15 years, {names[1]}')
                 plt.plot(self.x_prediction, self.pred_5, label=f'Based on last 5 years, {names[0]}')
                 plt.plot(self.x_prediction, self.pred_5_2, label=f'Based on last 5 years, {names[1]}')
-        plt.title('Population prediction for the next 50 years')
+        plt.title(f'Population prediction for the next 50 years {title}')
         plt.xlabel('Year')
         plt.ylabel('Population in millions')
         plt.legend()
