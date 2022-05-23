@@ -8,11 +8,11 @@ os.chdir(sys.path[0])
 
 # Gets norges-befolkning.csv and puts the information into a 2D array named "data"
 with open('norges-befolkning.csv', 'r') as f:
-    norway = np.genfromtxt(f, delimiter=';', dtype=int, skip_header=1, usecols=[0, 1], unpack=True)   
+    first_file = np.genfromtxt(f, delimiter=';', dtype=int, skip_header=1, usecols=[0, 1], unpack=True)   
     # returns a 2d array
     
 with open('sveriges-befolkning.csv', 'r') as f:
-    sweden = np.genfromtxt(f, delimiter=';', dtype=int, skip_header=1, usecols=[0, 1], unpack=True)   
+    second_file = np.genfromtxt(f, delimiter=';', dtype=int, skip_header=1, usecols=[0, 1], unpack=True)   
     # returns a 2d array
 
 
@@ -160,7 +160,7 @@ def point_slope_form(growth_rate, x1, y1):
 
 # Instantiates the class and picks a setting
 def main():
-    placeholder_2 = Placeholder(norway, sweden)
+    placeholder_2 = Placeholder(first_file, second_file)
     # Shows a graph of population over time with prediction for future population
     placeholder_2.plot(1, 'save', 'uno', ('Norway', 'Sweden'))
     placeholder_2.plot(1, 'save', 'dos', ('Norway', 'Sweden'))
