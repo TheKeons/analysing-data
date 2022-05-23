@@ -3,6 +3,7 @@ import sys
 import os
 import matplotlib.pyplot as plt
 
+# This makes sure the file can run on any computer
 os.chdir(sys.path[0])
 
 # Gets norges-befolkning.csv and puts the information into a 2D array named "data"
@@ -13,12 +14,12 @@ with open('sveriges-befolkning.csv', 'r') as f:
     sweden = np.genfromtxt(f, delimiter=';', dtype=int, skip_header=1, usecols=[0, 1], unpack=True)   # returns a 2d array
 
 class Placeholder:
-    def __init__(self, file, file2) -> None:
+    def __init__(self, file, file2):
         # Splits "data" into two lists
         self.x = file[0]
         self.t = file2[0]
         self.y = file[1] / 1000000
-        self.k=file2[1] / 1000000
+        self.k = file2[1] / 1000000
         # x1 og y1 are set to the last values in x and y
         self.x1 = self.x[-1]
         self.t1 = self.t[-1]
@@ -68,25 +69,25 @@ class Placeholder:
         match populations:
             case 'uno':
                 plt.plot(self.x, self.y)
-                plt.plot(self.x_prediction, self.pred_30, label=f'Next 30 years {names[0]}')
-                plt.plot(self.x_prediction, self.pred_15, label=f'Next 15 years {names[0]}')
-                plt.plot(self.x_prediction, self.pred_5, label=f'Next 5 years {names[0]}')
+                plt.plot(self.x_prediction, self.pred_30, label=f'Based on last 30 years, {names[0]}')
+                plt.plot(self.x_prediction, self.pred_15, label=f'Based on last 15 years, {names[0]}')
+                plt.plot(self.x_prediction, self.pred_5, label=f'Based on last 5 years, {names[0]}')
 
             case 'dos':
                 plt.plot(self.t, self.k)
-                plt.plot(self.x_prediction, self.pred_30_2, label=f'Next 30 years {names[1]}')
-                plt.plot(self.x_prediction, self.pred_15_2, label=f'Next 15 years {names[1]}')
-                plt.plot(self.x_prediction, self.pred_5_2, label=f'Next 5 years {names[1]}')
+                plt.plot(self.x_prediction, self.pred_30_2, label=f'Based on last 30 years, {names[1]}')
+                plt.plot(self.x_prediction, self.pred_15_2, label=f'Based on last 15 years, {names[1]}')
+                plt.plot(self.x_prediction, self.pred_5_2, label=f'Based on last 5 years, {names[1]}')
             
             case 'both':
                 plt.plot(self.x, self.y, label=names[0])
                 plt.plot(self.t, self.k, label=names[1])
-                plt.plot(self.x_prediction, self.pred_30, label=f'Next 30 years {names[0]}')
-                plt.plot(self.x_prediction, self.pred_30_2, label=f'Next 30 years {names[1]}')
-                plt.plot(self.x_prediction, self.pred_15, label=f'Next 15 years {names[0]}')
-                plt.plot(self.x_prediction, self.pred_15_2, label=f'Next 15 years {names[1]}')
-                plt.plot(self.x_prediction, self.pred_5, label=f'Next 5 years {names[0]}')
-                plt.plot(self.x_prediction, self.pred_5_2, label=f'Next 5 years {names[1]}')
+                plt.plot(self.x_prediction, self.pred_30, label=f'Based on last 30 years, {names[0]}')
+                plt.plot(self.x_prediction, self.pred_30_2, label=f'Based on last 30 years, {names[1]}')
+                plt.plot(self.x_prediction, self.pred_15, label=f'Based on last 15 years, {names[0]}')
+                plt.plot(self.x_prediction, self.pred_15_2, label=f'Based on last 15 years, {names[1]}')
+                plt.plot(self.x_prediction, self.pred_5, label=f'Based on last 5 years, {names[0]}')
+                plt.plot(self.x_prediction, self.pred_5_2, label=f'Based on last 5 years, {names[1]}')
         plt.title('Population prediction for the next 50 years')
         plt.xlabel('Year')
         plt.ylabel('Population in millions')
@@ -149,6 +150,7 @@ def main():
     placeholder_2 = Placeholder(norway, sweden)
     # Shows a graph of population over time with prediction for future population
     placeholder_2.plot(1, 'plot', 'uno', ('Norway', 'Sweden'))
+    placeholder_2.plot(1, 'plot', 'dos', ('Norway', 'Sweden'))
     placeholder_2.plot(2, 'plot', 'both', ('Norway', 'Sweden'))
     placeholder_2.plot(3, 'plot', 'both', ('Norway', 'Sweden'))
     # placeholder_2.plot(2,
