@@ -94,9 +94,10 @@ class Placeholder:
         plt.legend()
         # Picks whether to save or show graph
         if goal == 'save':
-            plt.savefig('prediction.png')
+            plt.savefig(f'prediction_{populations}.png')
         else:
             plt.show()
+        plt.clf()
 
     # Plots the growth rate of the population over time into a graph
     def plot_derivative(self, goal, populations, names):
@@ -120,6 +121,7 @@ class Placeholder:
             plt.savefig('growth_rate.png')
         else:
             plt.show()
+        plt.clf()
 
     # Plots a graph of population over time
     def plot_population(self, goal, populations, names):
@@ -143,6 +145,7 @@ class Placeholder:
             plt.savefig('population.png')
         else:
             plt.show()
+        plt.clf()
 
 
 # Returns the derivative for all values of x in a list
@@ -159,10 +162,10 @@ def point_slope_form(growth_rate, x1, y1):
 def main():
     placeholder_2 = Placeholder(norway, sweden)
     # Shows a graph of population over time with prediction for future population
-    placeholder_2.plot(1, 'plot', 'uno', ('Norway', 'Sweden'))
-    placeholder_2.plot(1, 'plot', 'dos', ('Norway', 'Sweden'))
-    placeholder_2.plot(2, 'plot', 'both', ('Norway', 'Sweden'))
-    placeholder_2.plot(3, 'plot', 'both', ('Norway', 'Sweden'))
+    placeholder_2.plot(1, 'save', 'uno', ('Norway', 'Sweden'))
+    placeholder_2.plot(1, 'save', 'dos', ('Norway', 'Sweden'))
+    placeholder_2.plot(2, 'save', 'both', ('Norway', 'Sweden'))
+    placeholder_2.plot(3, 'save', 'both', ('Norway', 'Sweden'))
     # placeholder_2.plot(2,
     # 'didyoueverhearthetragedyofdarthplagueisthewise?
     # Ithoughtnot.ItsnotastorytheJediwouldtellyou.ItsaSithlegend.DarthPlagueiswasaDarkLordoftheSith,
